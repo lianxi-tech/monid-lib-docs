@@ -1,0 +1,284 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>3. Public Profile &mdash; MONiD-Lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="4. Credential-based Communication Flows" href="interactionFlows.html" />
+    <link rel="prev" title="2. Signed Credentials" href="signedCredentials.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MONiD-Lib
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Where to go next?</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signedCredentials.html">2. Signed Credentials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Public Profile</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-public-profile">3.1. Adding a public profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#removing-your-public-profile">3.2. Removing your public profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view-the-public-profile">3.3. View the public profile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="interactionFlows.html">4. Credential-based Communication Flows</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MONiD-Lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">3. </span>Public Profile</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/publicProfile.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="public-profile">
+<h1><span class="section-number">3. </span>Public Profile<a class="headerlink" href="#public-profile" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This section only applies to the <a class="reference external" href="https://github.com/lianxi-tech/monid">did:monid</a> did method, or other DID mehtod implementations with a defined <a class="reference external" href="https://github.com/lianxi-tech/monid/blob/master/packages/monid-did-registry/ts/index.ts#L70">publishPublicProfile</a> method.</p>
+</div>
+<p>A public profile can be attached to an identity to make it easy for any identity with which you interact to easily resolve your identity. This is especially relevant for interactions with online services,
+as a public profile can be used to advertise interaction conditions, as well as various attestations.</p>
+<p>Before you start, be sure to initialize the <code class="docutils literal notranslate"><span class="pre">IdentityWallet</span></code> class as outlined in the <a class="reference external" href="https://monid-lib.readthedocs.io/en/latest/gettingStarted.html#how-to-create-a-self-sovereign-identity">Getting Started</a> section.</p>
+<div class="section" id="adding-a-public-profile">
+<h2><span class="section-number">3.1. </span>Adding a public profile<a class="headerlink" href="#adding-a-public-profile" title="Permalink to this headline">¶</a></h2>
+<p>We currently model public profiles as simple <code class="docutils literal notranslate"><span class="pre">SignedCredential</span></code> instances, each containing the following claims:
+<code class="docutils literal notranslate"><span class="pre">about</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code>, <code class="docutils literal notranslate"><span class="pre">image</span></code>, and <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<p>Before we can publish the credential, we need to first create it:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">claimsMetadata</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib&#39;</span>
+
+<span class="kr">const</span> <span class="nx">myPublicProfile</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;MONiD&#39;</span><span class="p">,</span>
+  <span class="nx">about</span><span class="o">:</span> <span class="s1">&#39;We enable a global identity system&#39;</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">publicProfileCredential</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">signedCredential</span><span class="p">({</span>
+  <span class="nx">metadata</span>: <span class="kt">claimsMetadata.publicProfile</span><span class="p">,</span>
+  <span class="nx">claim</span>: <span class="kt">myPublicProfile</span><span class="p">,</span>
+  <span class="nx">subject</span>: <span class="kt">identityWallet.did</span>
+<span class="p">},</span> <span class="nx">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add the newly created public profile to your identity:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">MONiD</span><span class="p">.</span><span class="nx">didMethods</span><span class="p">.</span><span class="nx">monid</span><span class="p">.</span><span class="nx">registrar</span><span class="p">.</span><span class="nx">updatePublicProfile</span><span class="p">(</span>
+  <span class="nx">softwareKeyProvider</span><span class="p">,</span>
+  <span class="nx">password</span><span class="p">,</span>
+  <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">identity</span><span class="p">,</span>
+  <span class="nx">publicProfileCredential</span>
+<span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">successful</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">successful</span><span class="p">))</span> <span class="c1">// true</span>
+</pre></div>
+</div>
+<p>At this point, the public profile will be published / advertised as defined by the employed DID method instance.</p>
+</div>
+<div class="section" id="removing-your-public-profile">
+<h2><span class="section-number">3.2. </span>Removing your public profile<a class="headerlink" href="#removing-your-public-profile" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">identityWallet</span><span class="p">.</span><span class="nx">identity</span><span class="p">.</span><span class="nx">publicProfile</span> <span class="o">=</span> <span class="kc">undefined</span>
+
+<span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">didMethods</span><span class="p">.</span><span class="nx">monid</span><span class="p">.</span><span class="nx">registrar</span><span class="p">.</span><span class="nx">update</span><span class="p">({</span>
+  <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">didDocument</span><span class="p">,</span>
+  <span class="nx">softwareKeyProvider</span><span class="p">,</span>
+  <span class="nx">password</span>
+<span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">successful</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">succesful</span><span class="p">))</span> <span class="c1">// true</span>
+</pre></div>
+</div>
+<p>Please note that due to the way that IPFS handles the concept of deletion, this delete method simply unpins your public profile from its corresponding pin set, and allows the unpinned data
+to be removed by the “garbage collection” process. Accordingly, if the data has been pinned by another IPFS gateway, complete removal of stored information on the IPFS network cannot be ensured.</p>
+</div>
+<div class="section" id="view-the-public-profile">
+<h2><span class="section-number">3.3. </span>View the public profile<a class="headerlink" href="#view-the-public-profile" title="Permalink to this headline">¶</a></h2>
+<p>If the identity has an associated public profile credential, and the correct resolver is used (e.g. in this case <code class="docutils literal notranslate"><span class="pre">MONiD.didMethods.monid.resolver</span></code>), the <code class="docutils literal notranslate"><span class="pre">Identity</span></code> instance returned as a result of resolution will have the associated public profile field populated.</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">didMethods</span><span class="p">.</span><span class="nx">monid</span><span class="p">.</span><span class="nx">resolver</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">identityWallet</span><span class="p">.</span><span class="nx">did</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">identity</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">identity</span><span class="p">.</span><span class="nx">publicProfile</span><span class="p">)</span> <span class="c1">// Should contain the previously published signed credentials</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="interactionFlows.html" class="btn btn-neutral float-right" title="4. Credential-based Communication Flows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="signedCredentials.html" class="btn btn-neutral float-left" title="2. Signed Credentials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

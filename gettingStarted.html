@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>1. Getting Started &mdash; MONiD-Lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="2. Signed Credentials" href="signedCredentials.html" />
+    <link rel="prev" title="MONiD SSI Protocol" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MONiD-Lib
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Where to go next?</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install-the-monid-library">1.1. How to install the MONiD library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-create-a-self-sovereign-identity">1.2. How to create a self-sovereign identity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-reuse-a-self-sovereign-identity">1.3. How to reuse a self-sovereign identity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="signedCredentials.html">2. Signed Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publicProfile.html">3. Public Profile</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interactionFlows.html">4. Credential-based Communication Flows</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MONiD-Lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">1. </span>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/gettingStarted.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1><span class="section-number">1. </span>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Please be aware that the MONiD library is still undergoing active development. All identities are currently anchored on the Rinkeby testnet.
+Please do not transfer any real ether to your MONiD identity.</p>
+</div>
+<div class="section" id="how-to-install-the-monid-library">
+<h2><span class="section-number">1.1. </span>How to install the MONiD library<a class="headerlink" href="#how-to-install-the-monid-library" title="Permalink to this headline">¶</a></h2>
+<p>To begin using the MONiD library, first add it as a dependency in your project. You can use <code class="docutils literal notranslate"><span class="pre">npm</span></code> or <code class="docutils literal notranslate"><span class="pre">yarn</span></code> to do so:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># using npm</span>
+npm install @monid/lib --save
+
+<span class="c1"># using yarn</span>
+yarn add @monid/lib
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-create-a-self-sovereign-identity">
+<h2><span class="section-number">1.2. </span>How to create a self-sovereign identity<a class="headerlink" href="#how-to-create-a-self-sovereign-identity" title="Permalink to this headline">¶</a></h2>
+<p>In the context of the MONiD protocol / stack, an SSI is essentially a combination of a DID and a set of signing / encryption / controlling keys. The exact number and type of cryptographic keys required depends on the requirements of the used DID Method.</p>
+<p>Before a new identity can be created, a new <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> instance is required. This class is responsible for managing the cryptographic material associated with an identity. An empty key provider can be instantiated as follows:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">walletUtils</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/layer2-core-node&#39;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">SoftwareKeyProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/vaulted-key-provider&#39;</span>
+
+<span class="kr">const</span> <span class="nx">password</span> <span class="o">=</span> <span class="s1">&#39;secretpassword&#39;</span>
+
+<span class="nx">SoftwareKeyProvider</span><span class="p">.</span><span class="nx">newEmptyWallet</span><span class="p">(</span><span class="nx">walletUtils</span><span class="p">,</span> <span class="s1">&#39;id:&#39;</span><span class="p">,</span> <span class="nx">password</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">emptyWallet</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">emptyWallet</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>At this point <code class="docutils literal notranslate"><span class="pre">emptyWallet</span></code> is not yet populated with a DID or any signing / encryption / identity management keys. The easiest way to configure the wallet with the required keys is to use the <code class="docutils literal notranslate"><span class="pre">createIdentityFromKeyProvider</span></code> helper provided by the MONiD library:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">createIdentityFromKeyProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib/js/didMethods/utils&#39;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">MONiDLib</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib&#39;</span>
+
+<span class="kr">const</span> <span class="nx">did</span> <span class="o">=</span> <span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">didMethods</span><span class="p">.</span><span class="nx">monid</span>
+
+<span class="c1">// The emptyWallet created in the previous example</span>
+
+<span class="nx">createIdentityFromKeyProvider</span><span class="p">(</span>
+  <span class="nx">emptyWallet</span><span class="p">,</span>
+  <span class="nx">password</span><span class="p">,</span>
+  <span class="nx">did</span><span class="p">.</span><span class="nx">registrar</span>
+<span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">identityWallet</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">identityWallet</span><span class="p">.</span><span class="nx">did</span><span class="p">)</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>The function takes an <code class="docutils literal notranslate"><span class="pre">emptyWallet</span></code> and the corresponding encryption <code class="docutils literal notranslate"><span class="pre">password</span></code> as the first two arguments. The <code class="docutils literal notranslate"><span class="pre">password</span></code> will be used to decrypt the wallet contents before adding new keys / changing the associated DID / storing metadata, etc. Once the wallet state has been updated, the same password is used to encrypt the new state.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please note that this function mutates the contents of the wallet instance passed as an argument.
+I.e. if the creation is successful, the <code class="docutils literal notranslate"><span class="pre">emptyWallet.id</span></code> will be set to the new DID, and the <cite>emptyWallet.getPubKeys</cite> method will return all populated keys.</p>
+</div>
+<p>Deriving the required keys, as well as the wallet DID is fully delegated to the <code class="docutils literal notranslate"><span class="pre">IRegistrar</span></code> instance passed as the third argument. Internally, the <code class="docutils literal notranslate"><span class="pre">registrar</span></code> has access to the passed <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> instance, and can generate and persist all required keys according to the DID method specification. This approach results in greater flexibility when deriving keys (since the behavior is fully encapsulated in the <code class="docutils literal notranslate"><span class="pre">registrar</span></code>), allowing for various approaches to cater to different needs (for instance, the <code class="docutils literal notranslate"><span class="pre">MONiDDidMethod</span></code> module internally rely on specifications such as <a class="reference external" href="https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki">BIP32</a> and <a class="reference external" href="https://github.com/satoshilabs/slips/blob/master/slip-0010.md">SLIP0010</a> respectively for HD key derivation and simpler backups / recovery).</p>
+<p>To reiterate, the <code class="docutils literal notranslate"><span class="pre">registrar</span></code> implementation encapsulates the specification(s) employed for deriving keys (including metadata required for derivation, such as paths, indexes, etc.), as well as the process for deriving a DID based on the aforementioned keys.</p>
+<p>Provisioning the <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> with keys and a DID is the first step of the identity creation process. At this point, a DID Document (which indexes the keys and DID we’ve just created) can be created and “anchored” (the exact operations are DID method specific, and might for example entail creating a record mapping the newly created DID and the DID Document in a <a class="reference external" href="https://www.w3.org/TR/did-core/#dfn-verifiable-data-registry">verifiable data registry</a>).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For more documentation on the <code class="docutils literal notranslate"><span class="pre">DidMethod</span></code> abstraction, as well as examples of DID methods integrated with the MONiD stack, check out the <a class="reference external" href="https://github.com/lianxi-tech/monid">monid-did-method</a> repository.</p>
+</div>
+<p>Please note that the wallet passed to this function is generally expected to be empty (i.e. the <code class="docutils literal notranslate"><span class="pre">wallet.id</span></code> value should not be set to a valid DID, and no keys should be present), with the configuration fully delegated to the specified <code class="docutils literal notranslate"><span class="pre">registrar</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">MONiDDidMethod</span></code> registrar can also create an identity using a correctly populated wallet (i.e. the <code class="docutils literal notranslate"><span class="pre">id</span></code> value is set to a correct DID matching the <code class="docutils literal notranslate"><span class="pre">registrar's</span></code> DID method prefix, and the wallet is populated with the right set of keys, of the right type. In this case, the key / DID generation steps are skipped, and the anchoring operations are fired right away. Whether this functionality is supported or not depends on the <code class="docutils literal notranslate"><span class="pre">registrar</span></code> implementation used.</p>
+<p><strong>In case the wallet is not empty, and populated with a DID / set of keys incompatible with the passed registrar, an error is thrown.</strong></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Check out the <a class="reference external" href="https://github.com/lianxi-tech/monid-vaulted-key-provider">SoftwareKeyProvider documentation</a> for examples on how to manually populate a wallet instance with keys.</p>
+</div>
+</div>
+<div class="section" id="how-to-reuse-a-self-sovereign-identity">
+<h2><span class="section-number">1.3. </span>How to reuse a self-sovereign identity<a class="headerlink" href="#how-to-reuse-a-self-sovereign-identity" title="Permalink to this headline">¶</a></h2>
+<p>At later points, the identity can be reused if a <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> provisioned with the corresponding keys is available. The corresponding <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> can be instantiated in a number of ways (e.g. the wallet’s encrypted contents can be persisted to storage, and read / decrypted later, or a BIP39 / SLIP0010 mnemonic can be saved as part of identity creation, and then retrieved / used to derive all required keys).</p>
+<p>Given a populated wallet instance, the following alternative to <code class="docutils literal notranslate"><span class="pre">authAsIdentityFromKeyProvider</span></code> can be used to instantiate the identity:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">MONiDLib</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib&#39;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">authAsIdentityFromKeyProvider</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib/js/didMethods/utils&#39;</span>
+
+<span class="kr">const</span> <span class="nx">did</span> <span class="o">=</span> <span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">didMethods</span><span class="p">.</span><span class="nx">monid</span>
+
+<span class="c1">// E.g. using the previously created / populated SoftwareKeyProvider instance</span>
+<span class="nx">authAsIdentityFromKeyProvider</span><span class="p">(</span>
+  <span class="nx">emptyWallet</span><span class="p">,</span>
+  <span class="nx">password</span><span class="p">,</span>
+  <span class="nx">did</span><span class="p">.</span><span class="nx">resolver</span>
+<span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="nx">identityWallet</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">identityWallet</span><span class="p">.</span><span class="nx">did</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>The function is similar to the helper we’ve used to create the identity, except that this function will not attempt to “anchor” the identity but rather it will try to resolve (as defined by the corresponding DID method specification) an existing identity based on the DID / keys held by the passed <code class="docutils literal notranslate"><span class="pre">SoftwareKeyProvider</span></code> instance.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="signedCredentials.html" class="btn btn-neutral float-right" title="2. Signed Credentials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="MONiD SSI Protocol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

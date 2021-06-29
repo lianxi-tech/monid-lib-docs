@@ -1,0 +1,465 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>4. Credential-based Communication Flows &mdash; MONiD-Lib  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="3. Public Profile" href="publicProfile.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MONiD-Lib
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Where to go next?</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gettingStarted.html">1. Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="signedCredentials.html">2. Signed Credentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publicProfile.html">3. Public Profile</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Credential-based Communication Flows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#credential-requests">4.1. Credential requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credential-issuance">4.2. Credential issuance</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MONiD-Lib</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li><span class="section-number">4. </span>Credential-based Communication Flows</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/interactionFlows.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="credential-based-communication-flows">
+<h1><span class="section-number">4. </span>Credential-based Communication Flows<a class="headerlink" href="#credential-based-communication-flows" title="Permalink to this headline">¶</a></h1>
+<p>This section offers an overview of the interaction flows supported by the MONiD Library.</p>
+<p>Identities can interact in incredibly complex ways. We currently support a number of quite
+simple interaction flows, and intend to greatly expand the list in future releases.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The following sections assume you have already created an identity. If you have not yet created an identity, check out the <a class="reference external" href="https://monid-lib.readthedocs.io/en/latest/gettingStarted.html">Getting Started</a> section.</p>
+</div>
+<div class="section" id="credential-requests">
+<h2><span class="section-number">4.1. </span>Credential requests<a class="headerlink" href="#credential-requests" title="Permalink to this headline">¶</a></h2>
+<p>Many services require their users to provide certain information upon signing up.
+The MONiD library provides a simple way for services to present their requirements to users who wish to authenticate through. This is done by creating and broadcasting what we refer to as a “Credential Request”.
+First, the aforementioned request must be generated:</p>
+<p><strong>Create a Credential Request</strong></p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// An instance of an identityWallet is required at this point</span>
+<span class="kr">const</span> <span class="nx">credentialRequest</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
+  <span class="nx">callbackURL</span><span class="o">:</span> <span class="s1">&#39;https://example.com/authentication/&#39;</span><span class="p">,</span>
+  <span class="nx">credentialRequirements</span><span class="o">:</span> <span class="p">[{</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Credential&#39;</span><span class="p">,</span> <span class="s1">&#39;ProofOfEmailCredential&#39;</span><span class="p">],</span>
+    <span class="nx">constraints</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">}],</span>
+<span class="p">},</span> <span class="nx">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Documentation on <code class="docutils literal notranslate"><span class="pre">constraints</span></code> and how they can be used to create even more specific
+constraints will be added soon.</p>
+</div>
+<p>We also allow for simple constraints to be encoded as part of the credential request. If we want to communicate that only credentials issued by a particular <code class="docutils literal notranslate"><span class="pre">did</span></code> should be provided, we can do the following:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span><span class="nx">constraintFunctions</span><span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib/js/interactionTokens/credentialRequest&#39;</span>
+
+<span class="c1">// An instance of an identityWallet is required at this point</span>
+  <span class="kr">const</span> <span class="nx">credentialRequest</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
+    <span class="nx">callbackURL</span><span class="o">:</span> <span class="s1">&#39;https://example.com/authentication/&#39;</span><span class="p">,</span>
+    <span class="nx">credentialRequirements</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Credential&#39;</span><span class="p">,</span> <span class="s1">&#39;ProofOfEmailCredential&#39;</span><span class="p">],</span>
+        <span class="nx">constraints</span><span class="o">:</span> <span class="p">[</span><span class="nx">constraintFunctions</span><span class="p">.</span><span class="nx">is</span><span class="p">(</span><span class="s1">&#39;issuer&#39;</span><span class="p">,</span> <span class="s1">&#39;did:monid:abc...&#39;</span><span class="p">)]</span>
+      <span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="nx">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>By default the generated credential request will be valid for 1 hour. Attempting to scan or validate the requests after the expiry period
+will fail. In case you would like to specify a custom expiry date, the following is supported:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="c1">// You can also pass a custom expiry date for the credential, supported since v3.1.0</span>
+<span class="kr">const</span> <span class="nx">customExpiryDate</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="mi">2030</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">// An instance of an identityWallet is required at this point</span>
+  <span class="kr">const</span> <span class="nx">credentialRequest</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
+    <span class="nx">expires</span>: <span class="kt">customExpiryDate</span><span class="p">,</span>
+    <span class="nx">callbackURL</span><span class="o">:</span> <span class="s1">&#39;https://example.com/authentication/&#39;</span><span class="p">,</span>
+    <span class="nx">credentialRequirements</span><span class="o">:</span> <span class="p">[{</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;Credential&#39;</span><span class="p">,</span> <span class="s1">&#39;ProofOfEmailCredential&#39;</span><span class="p">],</span>
+        <span class="nx">constraints</span><span class="o">:</span> <span class="p">[]</span>
+      <span class="p">}]</span>
+  <span class="p">},</span>
+  <span class="nx">password</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The expiration date can be passed in a similar manner when creating other interaction token types as well (e.g. Authentication, Credential Offer, etc…)</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For further documentation and examples explaining how to create and send
+credential requests, as well as other interaction messages, refer to the <a class="reference external" href="https://htmlpreview.github.io/?https://raw.githubusercontent.com/lianxi-tech/monid-lib/master/api_docs/documentation/classes/credentialrequest.html">API documentation</a>,
+the the <a class="reference external" href="https://github.com/lianxi-tech/monid-lib/tree/master/tests/integration">integration tests</a>, and the <a class="reference external" href="https://github.com/lianxi-tech/monid-sdk/blob/main/docs/guides/interaction_flows.md">MONiD SDK documentation</a>.</p>
+</div>
+<p>The easiest way to make the credential request consumable for the client applications is to encode it
+as a <a class="reference external" href="https://jwt.io/introduction/">JSON Web Token</a>. This allows us to easily validate signatures on individual messages, as well as prevent replay attacks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The interaction messages can be sent to other agents for processing via any preferred channel. In order to allow <a class="reference external" href="https://github.com/lianxi-tech/monid-smartwallet-app">SmartWallet</a> users to consume the message, it can be encoded as a QR code, or via “Deep Links”..</p>
+</div>
+<p><strong>Consume a Signed Credential Request</strong></p>
+<p>Once the encoded credential request has been received on the client side, a corresponding credential response should be prepared and sent:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">credentialRequest</span> <span class="o">=</span> <span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">parse</span><span class="p">.</span><span class="nx">interactionToken</span><span class="p">.</span><span class="nx">fromJWT</span><span class="p">(</span><span class="nx">enc</span><span class="p">)</span>
+<span class="nx">identityWallet</span><span class="p">.</span><span class="nx">validateJWT</span><span class="p">(</span><span class="nx">credentialRequest</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">validateJWT</span></code> method will ensure the interaction request is not expired, and that it contains a valid signature.</p>
+</div>
+<p><strong>Create a Credential Response</strong></p>
+<p>Once the request has been decoded, we can create the response:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * The callback URL has to match the one in the request,</span>
+<span class="cm"> */</span>
+
+<span class="kr">const</span> <span class="nx">credentialResponse</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">share</span><span class="p">({</span>
+    <span class="nx">callbackURL</span>: <span class="kt">credentialRequest.payload.interactionToken.callbackURL</span><span class="p">,</span>
+    <span class="nx">suppliedCredentials</span><span class="o">:</span> <span class="p">[</span><span class="nx">signedEmailCredential</span><span class="p">.</span><span class="nx">toJSON</span><span class="p">()]</span> <span class="c1">// Provide signed credentials of requested type</span>
+  <span class="p">},</span>
+  <span class="nx">password</span><span class="p">,</span> <span class="c1">// The password to decrypt the seed for key generation as part of signing the JWT</span>
+  <span class="nx">credRequest</span> <span class="c1">// The received request, used to set the &#39;nonce&#39; and &#39;audience&#39; field on the created response</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Once the credential response has been assembled, it can be encoded and sent to the service’s callback URL:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">credentialResponseJWT</span>  <span class="o">=</span> <span class="nx">credentialResponse</span><span class="p">.</span><span class="nx">encode</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Consume a Signed Credential Response</strong></p>
+<p>Back to the service side! The credential response has been received and the provided data is ready to consume.
+First, decode the response:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">credentialResponse</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">parse</span><span class="p">.</span><span class="nx">interactionToken</span><span class="p">.</span><span class="nx">fromJWT</span><span class="p">(</span><span class="nx">receivedJWTEncodedResponse</span><span class="p">)</span>
+<span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">validateJWT</span><span class="p">(</span><span class="nx">credentialResponse</span><span class="p">,</span> <span class="nx">credentialRequest</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">validate</span></code> method will ensure the response contains a valid signature, is not expired, lists our
+<code class="docutils literal notranslate"><span class="pre">did</span></code> in the <code class="docutils literal notranslate"><span class="pre">aud</span></code> (audience) section, and contains the same <code class="docutils literal notranslate"><span class="pre">jti</span></code> (nonce) as the request.</p>
+</div>
+<p>After decoding the credential response, the service can verify that the user passed the credentials specified in the request:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm"> * We check against the request we created in a previous step</span>
+<span class="cm"> * this requires the server to be stateful. We are currently</span>
+<span class="cm"> * exploring alternatives (such as embedding the request in the response token).</span>
+<span class="cm"> */</span>
+
+<span class="kr">const</span> <span class="nx">validResponse</span> <span class="o">=</span> <span class="nx">credentialResponse</span><span class="p">.</span><span class="nx">satisfiesRequest</span><span class="p">(</span><span class="nx">credentialRequest</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">validResponse</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">&#39;Incorrect response received&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kr">const</span> <span class="nx">providedCredentials</span> <span class="o">=</span> <span class="nx">credentialResponse</span><span class="p">.</span><span class="nx">getSuppliedCredentials</span><span class="p">()</span>
+
+<span class="kr">const</span> <span class="nx">signatureValidationResults</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">MONiDLib</span><span class="p">.</span><span class="nx">util</span><span class="p">.</span><span class="nx">validateDigestables</span><span class="p">(</span><span class="nx">providedCredentials</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="nx">signatureValidationResults</span><span class="p">.</span><span class="nx">every</span><span class="p">(</span><span class="nx">result</span> <span class="o">=&gt;</span> <span class="nx">result</span> <span class="o">===</span> <span class="kc">true</span><span class="p">))</span> <span class="p">{</span>
+  <span class="c1">// The credentials can be used</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="credential-issuance">
+<h2><span class="section-number">4.2. </span>Credential issuance<a class="headerlink" href="#credential-issuance" title="Permalink to this headline">¶</a></h2>
+<p>The MONiD Library also allows for the issuance  of verifiable credentials. Similarly to the flow
+outlined in the previous subsection, a “Credential Offer” needs to be created and broadcast.</p>
+<p><strong>Create a Credential Offer</strong></p>
+<p>Firstly, a credential offer needs to be created:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">credentialOffer</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">offer</span><span class="p">({</span>
+  <span class="nx">callbackURL</span><span class="o">:</span> <span class="s1">&#39;https://example.com/receive/&#39;</span><span class="p">,</span>
+  <span class="nx">offeredCredentials</span><span class="o">:</span> <span class="p">[{</span>
+   <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;idCard&#39;</span>
+  <span class="p">},</span> <span class="p">{</span>
+   <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;otherCredential&#39;</span>
+  <span class="p">}]</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>The endpoint denoted by the <code class="docutils literal notranslate"><span class="pre">callbackURL</span></code> key will be used by the client device to send response to the offer.</p>
+<p>The CredentialOffer objects may also contain additional information in the form of <code class="docutils literal notranslate"><span class="pre">requestedInput</span></code>,
+<code class="docutils literal notranslate"><span class="pre">renderInfo</span></code> and <code class="docutils literal notranslate"><span class="pre">metadata</span></code> (which currently supports only a boolean <code class="docutils literal notranslate"><span class="pre">asynchronous</span></code> key).</p>
+<p>A more complex offer can be created as follows:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">CredentialRenderTypes</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@monid/lib/interactionTokens/interactionTokens.types&#39;</span>
+
+<span class="kr">const</span> <span class="nx">idCardOffer</span>: <span class="kt">CredentialOffer</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;idCard&#39;</span><span class="p">,</span>
+  <span class="nx">renderInfo</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">renderAs</span>: <span class="kt">CredentialRenderTypes.document</span><span class="p">,</span>
+    <span class="nx">logo</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;https://example-1.png&#39;</span>
+    <span class="p">},</span>
+    <span class="nx">background</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;https://example-2.png&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="nx">text</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">color</span><span class="o">:</span> <span class="s1">&#39;#05050d&#39;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">asynchronous</span>: <span class="kt">false</span> <span class="c1">// Is the credential available right away?</span>
+  <span class="p">},</span>
+  <span class="nx">requestedInput</span><span class="o">:</span> <span class="p">{}</span> <span class="c1">// What is required to receive the credential, e.g. residence permit credential, etc.</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">metadata.asynchronous</span></code> and <code class="docutils literal notranslate"><span class="pre">requestedInput</span></code> keys are not currently used, and act as placeholders. We are awaiting further standardization efforts.
+An example of such standardization initiatives is the <a class="reference external" href="https://identity.foundation/presentation-exchange/">Presentation Exchange specification</a> proposal.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">renderInfo</span></code> is used to describe how a credential should be rendered and is currently supported
+by the MONiD Smartwallet. The currently supported options are:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">enum</span> <span class="nx">CredentialRenderTypes</span> <span class="p">{</span>
+  <span class="nb">document</span> <span class="o">=</span> <span class="s1">&#39;document&#39;</span><span class="p">,</span>
+  <span class="nx">permission</span> <span class="o">=</span> <span class="s1">&#39;permission&#39;</span><span class="p">,</span>
+  <span class="nx">claim</span> <span class="o">=</span> <span class="s1">&#39;claim&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="kr">export</span> <span class="kr">interface</span> <span class="nx">CredentialOfferRenderInfo</span> <span class="p">{</span>
+  <span class="nx">renderAs?</span>: <span class="kt">CredentialRenderTypes</span>
+  <span class="nx">background</span><span class="o">?:</span> <span class="p">{</span>
+    <span class="nx">color?</span>: <span class="kt">string</span> <span class="c1">// Hex value</span>
+    <span class="nx">url?</span>: <span class="kt">string</span> <span class="c1">// URL to base64 encoded background image</span>
+  <span class="p">}</span>
+  <span class="nx">logo</span><span class="o">?:</span> <span class="p">{</span>
+    <span class="nx">url</span>: <span class="kt">string</span> <span class="c1">// URL to base64 encoded image</span>
+  <span class="p">}</span>
+  <span class="nx">text</span><span class="o">?:</span> <span class="p">{</span>
+    <span class="nx">color</span>: <span class="kt">string</span> <span class="c1">// Hex value</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Consume a Credential Offer</strong></p>
+<p>On the client side, we can decode and validate the received credential request as follows:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">credentialOffer</span> <span class="o">=</span> <span class="nx">MONiD</span><span class="p">.</span><span class="nx">parse</span><span class="p">.</span><span class="nx">interactionToken</span><span class="p">.</span><span class="nx">fromJWT</span><span class="p">(</span><span class="nx">enc</span><span class="p">)</span>
+<span class="nx">identityWallet</span><span class="p">.</span><span class="nx">validateJWT</span><span class="p">(</span><span class="nx">credentialRequest</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">validateJWT</span></code> method will ensure the interaction request is not expired, and that it contains a valid signature.</p>
+</div>
+<p><strong>Create a Credential Offer Response</strong></p>
+<p>To create a response for a credential offer, the callbackURL and the selected credentials must be used:</p>
+<div class="highlight-typescript notranslate"><div class="highlight"><pre><span></span><span class="kr">const</span> <span class="nx">offerResponse</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">identityWallet</span><span class="p">.</span><span class="nx">create</span><span class="p">.</span><span class="nx">interactionTokens</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">offer</span><span class="p">({</span>
+  <span class="nx">callbackURL</span>: <span class="kt">credentialOffer.callbackURL</span><span class="p">,</span>
+  <span class="nx">selectedCredentials</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;idCard&#39;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;otherCredential&#39;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span> <span class="nx">secret</span><span class="p">,</span> <span class="nx">credentialOffer</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The structure of the response will change as we add support for the aforementioned <code class="docutils literal notranslate"><span class="pre">requestedInput</span></code> field.</p>
+</div>
+<p><strong>Transferring the credential to the user</strong></p>
+<p>The credential offer response is sent back to the <code class="docutils literal notranslate"><span class="pre">callbackURL</span></code> provided by the service. At this point, the service can generate the credentials and transfer them to the user.
+There are a few way to accomplish the last step, currently the service simply issues a <code class="docutils literal notranslate"><span class="pre">CredentialResponse</span></code> JWT containing the credentials.
+We intend to use <a class="reference external" href="https://w3c.github.io/vc-data-model/#presentations-0">Verifiable Presentations</a> for this step once the specification matures.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="publicProfile.html" class="btn btn-neutral float-left" title="3. Public Profile" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright .
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
